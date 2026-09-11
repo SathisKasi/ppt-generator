@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Presentation Generator</title>
+    <link rel="stylesheet" href="/static/ups_healthcare.css">
+</head>
+
+<body>
+    <main class="shell">
+        <header class="masthead">
+
+
+            <div class="main-nav">
+                <div class="brand-lockup">
+                    <span class="mark">UPS</span>
+                    <div class="brand-text">
+                        <span class="brand-name">UPS Healthcare</span>
+                    </div>
+                </div>               
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <h1>PPT Generator</h1>
+                <p class="lede">Simple text prompt or document into a complete, professional slide deck in seconds
+                </p>
+            </div>            
+        </section>
+
+        <section class="workspace">
+            <div id="dropzone" class="dropzone">
+                <!-- <div class="upload-icon">+</div> -->
+                <h2>Upload your file</h2>
+                <p>Drag and drop a PDF, DOCX, PPTX, XLSX, CSV, TXT, or Markdown file.</p>
+                <input id="fileInput" type="file" accept=".pdf,.docx,.pptx,.xlsx,.csv,.txt,.md,.markdown">
+                <div class="dropzone-actions">
+                    <button id="chooseButton" type="button">Choose file</button>
+                    <button id="resetButton" class="secondary" type="button">Reset</button>
+                </div>
+                <p id="fileName" class="filename">No file selected</p>
+                <label class="template-field" for="templateSelect">
+                    Presentation template
+                    <select id="templateSelect">
+                        <option value="">Loading templates...</option>
+                    </select>
+                </label>
+                <label class="template-field" for="slideCountSelect">
+                    Number of slides
+                    <select id="slideCountSelect">
+                        <option value="3">3 slides</option>
+                        <option value="5">5 slides</option>
+                        <option value="8" selected>8 slides</option>
+                        <option value="10">10 slides</option>
+                        <option value="12">12 slides</option>
+                        <option value="15">15 slides</option>
+                        <option value="20">20 slides</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="status-panel">
+                <div class="panel-heading">
+                    <span>Generation status</span>
+                    <span id="statusLabel" class="status-label">Waiting</span>
+                </div>
+
+                <ol id="steps">
+                    <li data-step="uploaded">File uploaded</li>
+                    <li data-step="extracted">Content extracted</li>
+                    <li data-step="analyzed">Content analyzed</li>
+                    <li data-step="planned">Presentation planned</li>
+                    <li data-step="generated">PowerPoint generated</li>
+                </ol>
+
+                <button id="generateButton" class="primary" type="button" disabled>Generate presentation</button>
+                <a id="downloadButton" class="download disabled" aria-disabled="true">Download PowerPoint</a>
+                <p id="error" class="error" role="alert"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

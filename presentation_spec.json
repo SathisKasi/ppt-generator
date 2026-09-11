@@ -1,0 +1,299 @@
+{
+  "presentation": {
+    "title": "Healthcare presentation automation",
+    "subtitle": "Executive presentation specification",
+    "audience": "UPS Healthcare executive leadership",
+    "purpose": "Transform supplied business information into an executive-ready presentation outline.",
+    "estimated_duration_minutes": 20,
+    "theme": {
+      "brand": "UPS Healthcare",
+      "branding_status": "Configuration required"
+    },
+    "slides": [
+      {
+        "slide_number": 1,
+        "slide_type": "title",
+        "section": "",
+        "title": "Healthcare presentation automation",
+        "purpose": "Introduce the initiative and establish the decision context.",
+        "executive_message": "Healthcare presentation automation",
+        "layout": "title",
+        "content": [
+          "Audience: UPS Healthcare executive leadership"
+        ],
+        "visual": {
+          "required": false,
+          "type": "none",
+          "description": ""
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 2,
+        "slide_type": "executive_summary",
+        "section": "Executive overview",
+        "title": "Executive Summary",
+        "purpose": "Summarize the problem, proposal, value, and required action.",
+        "executive_message": "The initiative requires a confirmed problem, objective, and decision path.",
+        "layout": "message_with_supporting_points",
+        "content": [
+          "Problem: Presentation preparation is manual and inconsistent",
+          "Why it matters: Reduce preparation time while improving executive quality",
+          "Proposed response: Requires confirmation",
+          "Expected impact: Requires confirmation",
+          "Decision required: Requires confirmation"
+        ],
+        "visual": {
+          "required": true,
+          "type": "kpi_cards",
+          "description": "Five compact executive callouts for problem, importance, proposal, impact, and decision."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 3,
+        "slide_type": "agenda",
+        "section": "Executive overview",
+        "title": "Agenda",
+        "purpose": "Orient the audience to the actual story structure.",
+        "executive_message": "The discussion moves from context and problem to solution and action.",
+        "layout": "numbered_sections",
+        "content": [
+          "01 Context and business problem",
+          "02 Objectives and current state",
+          "03 Proposed solution and capabilities",
+          "04 Value, implementation, and risks",
+          "05 Recommendation and next steps"
+        ],
+        "visual": {
+          "required": true,
+          "type": "section_list",
+          "description": "Five numbered agenda sections matching the presentation flow."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 4,
+        "slide_type": "business_context",
+        "section": "Context and problem",
+        "title": "Business Context",
+        "purpose": "Establish the business setting using only supplied evidence.",
+        "executive_message": "The source material provides context that must be validated before commitment.",
+        "layout": "two_column",
+        "content": [
+          "Context: Title: Healthcare presentation automation",
+          "Evidence: Not provided"
+        ],
+        "visual": {
+          "required": true,
+          "type": "context_map",
+          "description": "A simple context-to-impact map with evidence gaps clearly marked."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 5,
+        "slide_type": "business_problem",
+        "section": "Context and problem",
+        "title": "Business Problem",
+        "purpose": "Make the primary business issue explicit.",
+        "executive_message": "Presentation preparation is manual and inconsistent",
+        "layout": "problem_statement",
+        "content": [
+          "Current pain point: Presentation preparation is manual and inconsistent",
+          "Business consequence: Not provided"
+        ],
+        "visual": {
+          "required": true,
+          "type": "cause_effect",
+          "description": "Cause-and-effect chain from the stated problem to business consequence."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 6,
+        "slide_type": "objectives",
+        "section": "Objectives and current state",
+        "title": "Objectives",
+        "purpose": "Translate the stated need into measurable outcomes without inventing targets.",
+        "executive_message": "Reduce preparation time while improving executive quality",
+        "layout": "objective_cards",
+        "content": [
+          "Primary objective: Reduce preparation time while improving executive quality",
+          "Success measure: Not provided"
+        ],
+        "visual": {
+          "required": true,
+          "type": "target_cards",
+          "description": "Outcome cards with target and measurement fields flagged for confirmation."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 7,
+        "slide_type": "current_state",
+        "section": "Objectives and current state",
+        "title": "Current State",
+        "purpose": "Show what is known about today and expose missing baseline information.",
+        "executive_message": "The current-state baseline is not provided and requires confirmation.",
+        "layout": "before_after",
+        "content": [
+          "Known today: Title: Healthcare presentation automation",
+          "Baseline metrics: Not provided"
+        ],
+        "visual": {
+          "required": true,
+          "type": "before_after",
+          "description": "Before-state panel with evidence and explicit baseline gaps."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 8,
+        "slide_type": "proposed_solution",
+        "section": "Solution and value",
+        "title": "Proposed Solution",
+        "purpose": "Describe the proposed response at an executive level.",
+        "executive_message": "A proposed solution is not defined in the supplied material.",
+        "layout": "solution_overview",
+        "content": [
+          "Solution concept: Requires confirmation",
+          "Scope: Requires confirmation"
+        ],
+        "visual": {
+          "required": true,
+          "type": "conceptual_architecture",
+          "description": "Placeholder architecture showing inputs, solution, and outcomes without invented capabilities."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 9,
+        "slide_type": "benefits",
+        "section": "Solution and value",
+        "title": "Expected Value",
+        "purpose": "Connect the solution to business value and measurable outcomes.",
+        "executive_message": "Benefits and quantified impact require source evidence or stakeholder confirmation.",
+        "layout": "benefit_columns",
+        "content": [
+          "Business benefit: Not provided",
+          "Expected impact: Not provided"
+        ],
+        "visual": {
+          "required": true,
+          "type": "benefit_chain",
+          "description": "Capability-to-benefit chain with unverified claims clearly marked."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 10,
+        "slide_type": "implementation_roadmap",
+        "section": "Implementation and action",
+        "title": "Implementation Roadmap",
+        "purpose": "Frame the delivery path and identify missing milestones.",
+        "executive_message": "A delivery timeline and milestones require confirmation.",
+        "layout": "roadmap",
+        "content": [
+          "Phase 1: Requires confirmation",
+          "Phase 2: Requires confirmation",
+          "Go-live: Requires confirmation"
+        ],
+        "visual": {
+          "required": true,
+          "type": "timeline",
+          "description": "Three-phase timeline with owners, dates, and exit criteria to be confirmed."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 11,
+        "slide_type": "risks_and_mitigations",
+        "section": "Implementation and action",
+        "title": "Risks and Considerations",
+        "purpose": "Make delivery risks, dependencies, and assumptions visible before approval.",
+        "executive_message": "Risks, dependencies, and assumptions are not provided and need validation.",
+        "layout": "risk_table",
+        "content": [
+          "Risk: Not provided",
+          "Mitigation: Not provided",
+          "Dependency: Not provided"
+        ],
+        "visual": {
+          "required": true,
+          "type": "risk_matrix",
+          "description": "Risk matrix with likelihood, impact, owner, and mitigation fields."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      },
+      {
+        "slide_number": 12,
+        "slide_type": "next_steps",
+        "section": "Implementation and action",
+        "title": "Recommendation and Next Steps",
+        "purpose": "Close with the action required to progress the initiative.",
+        "executive_message": "Confirm the evidence, decision owner, and next action before proceeding.",
+        "layout": "decision_and_actions",
+        "content": [
+          "Recommendation: Requires confirmation",
+          "Decision owner: Requires confirmation",
+          "Next action: Requires confirmation"
+        ],
+        "visual": {
+          "required": true,
+          "type": "decision_path",
+          "description": "Decision gate leading to three prioritized next actions."
+        },
+        "data": [],
+        "speaker_notes": "Confirm unsupported details before executive review.",
+        "source_references": [
+          "example_input.txt"
+        ]
+      }
+    ]
+  }
+}

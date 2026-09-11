@@ -1,0 +1,1 @@
+"""Safe local file storage."""

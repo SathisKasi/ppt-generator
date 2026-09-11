@@ -1,0 +1,4 @@
+Title: Healthcare presentation automation
+Audience: UPS Healthcare executive leadership
+Problem: Presentation preparation is manual and inconsistent
+Objective: Reduce preparation time while improving executive quality

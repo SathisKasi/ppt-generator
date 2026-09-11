@@ -1,0 +1,1 @@
+"""AI Presentation Generator application package."""
