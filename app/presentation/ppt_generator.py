@@ -12,7 +12,10 @@ from pptx.util import Inches, Pt
 from app.models.presentation_model import PresentationEnvelope
 from app.presentation.layouts import SLIDE_HEIGHT, SLIDE_WIDTH
 from app.presentation.slide_builder import add_bullets, add_footer, add_message, add_title
+import re
+
 from app.presentation.template_catalog import get_template
+from app.presentation.themes import get_theme
 from app.config import get_settings
 
 
@@ -213,19 +216,27 @@ def _fill_background(slide, color: RGBColor = BG_DARK) -> None:
     fill.fore_color.rgb = color
 
 
-def _rect(slide, left: float, top: float, width: float, height: float, fill_color: RGBColor):
+def _rect(slide, left: float, top: float, width: float, height: float, fill_color: RGBColor, line_color: RGBColor | None = None, line_width: float = 1.0):
     shape = slide.shapes.add_shape(1, Inches(left), Inches(top), Inches(width), Inches(height))
     shape.fill.solid()
     shape.fill.fore_color.rgb = fill_color
-    shape.line.fill.background()
+    if line_color is not None:
+        shape.line.color.rgb = line_color
+        shape.line.width = Pt(line_width)
+    else:
+        shape.line.fill.background()
     return shape
 
 
-def _oval(slide, left: float, top: float, width: float, height: float, fill_color: RGBColor):
+def _oval(slide, left: float, top: float, width: float, height: float, fill_color: RGBColor, line_color: RGBColor | None = None):
     shape = slide.shapes.add_shape(9, Inches(left), Inches(top), Inches(width), Inches(height))
     shape.fill.solid()
     shape.fill.fore_color.rgb = fill_color
-    shape.line.fill.background()
+    if line_color is not None:
+        shape.line.color.rgb = line_color
+        shape.line.width = Pt(1.5)
+    else:
+        shape.line.fill.background()
     return shape
 
 
@@ -240,6 +251,7 @@ def _txt(
     color: RGBColor = TEXT_LIGHT,
     bold: bool = False,
     align=PP_ALIGN.LEFT,
+    font_name: str = TEMPLATE_FONT,
 ):
     box = slide.shapes.add_textbox(Inches(left), Inches(top), Inches(width), Inches(height))
     frame = box.text_frame
@@ -249,7 +261,7 @@ def _txt(
     paragraph.alignment = align
     run = paragraph.add_run()
     run.text = str(text or "")
-    run.font.name = TEMPLATE_FONT
+    run.font.name = font_name
     run.font.size = Pt(size)
     run.font.bold = bold
     run.font.color.rgb = color
@@ -268,23 +280,25 @@ def _template_lines(slide_model) -> list[str]:
     return cleaned
 
 
-def _bullets(slide, items: list[str], left: float, top: float, width: float, height: float, size: int = 17):
+def _bullets(slide, items: list[str], left: float, top: float, width: float, height: float, size: int = 17, color: RGBColor | None = None, font_name: str = TEMPLATE_FONT):
     box = slide.shapes.add_textbox(Inches(left), Inches(top), Inches(width), Inches(height))
     frame = box.text_frame
     frame.clear()
     frame.word_wrap = True
     bullet = chr(8226)
+    text_color = color or TEXT_LIGHT
     for index, item in enumerate(items):
         text = str(item).lstrip("#").lstrip("*-").strip()
         if not text:
             continue
         paragraph = frame.paragraphs[0] if index == 0 else frame.add_paragraph()
         paragraph.alignment = PP_ALIGN.LEFT
+        paragraph.space_after = Pt(8)
         run = paragraph.add_run()
         run.text = f"{bullet} {text}"
-        run.font.name = TEMPLATE_FONT
+        run.font.name = font_name
         run.font.size = Pt(size)
-        run.font.color.rgb = TEXT_LIGHT
+        run.font.color.rgb = text_color
     return box
 
 

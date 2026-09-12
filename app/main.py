@@ -15,6 +15,7 @@ app.include_router(upload.router, prefix="/api")
 app.include_router(presentation.router, prefix="/api")
 app.include_router(download.router, prefix="/api")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/images", StaticFiles(directory="images"), name="images")
 
 
 @app.get("/health")
