@@ -308,13 +308,13 @@ def _header_bar(slide, title: str, title_size: int = 28) -> None:
     _txt(slide, title, 0.3, 0.1, 12.5, 1.1, size=title_size, bold=True, color=TEXT_WHITE)
 
 
-def _draw_reference_title(slide, slide_model) -> None:
+def _draw_reference_title(slide, slide_model, topic_name: str = "", presented_by: str = "") -> None:
     _fill_background(slide, BG_DARK)
     _rect(slide, 0, 6.2, 13.333, 0.1, ACCENT_RED)
     _rect(slide, 0, 0, 13.333, 0.08, ACCENT_PURPLE)
     _rect(slide, 0, 0, 0.05, 7.5, ACCENT_PURPLE)
-    _txt(slide, slide_model.title, 1.0, 2.0, 11.0, 1.5, size=44, bold=True, color=TEXT_WHITE, align=PP_ALIGN.CENTER)
-    subtitle = slide_model.executive_message or slide_model.purpose
+    _txt(slide, topic_name or slide_model.title, 1.0, 2.0, 11.0, 1.5, size=44, bold=True, color=TEXT_WHITE, align=PP_ALIGN.CENTER)
+    subtitle = f"Presented by: {presented_by}" if presented_by else (slide_model.executive_message or slide_model.purpose)
     _txt(slide, subtitle, 1.0, 3.8, 11.0, 0.8, size=22, color=TEXT_LIGHT, align=PP_ALIGN.CENTER)
     _txt(slide, "CONFIDENTIAL", 0.3, 6.8, 3.0, 0.4, size=10, color=TEXT_MUTED)
 
@@ -416,10 +416,14 @@ def _render_reference_template_deck(presentation: PresentationEnvelope, output_p
         "timeline": _draw_reference_timeline,
         "conclusion": _draw_reference_conclusion,
     }
+    theme = presentation.presentation.theme
     for index, slide_model in enumerate(slide_models):
         slide = deck.slides.add_slide(blank_layout)
         layout_name = _reference_layout_name(slide_model, index, len(slide_models))
-        drawers[layout_name](slide, slide_model)
+        if layout_name == "title":
+            _draw_reference_title(slide, slide_model, theme.get("topic_name", ""), theme.get("presented_by", ""))
+        else:
+            drawers[layout_name](slide, slide_model)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     presentation.presentation.theme.update({"template_id": template["id"], "template_name": template["name"]})
     deck.save(output_path)
@@ -468,9 +472,11 @@ def _render_generated_slide(slide, slide_model, theme: dict, use_template: bool)
         _populate_template_slide(slide, slide_model, theme)
         return
 
-    add_title(slide, slide_model.title, slide_model.section, theme)
-    if slide_model.executive_message:
-        add_message(slide, slide_model.executive_message, theme)
+    title = theme.get("topic_name", "") if slide_model.slide_number == 1 else slide_model.title
+    add_title(slide, title or slide_model.title, slide_model.section, theme)
+    message = theme.get("presented_by", "") if slide_model.slide_number == 1 else slide_model.executive_message
+    if message:
+        add_message(slide, f"Presented by: {message}" if slide_model.slide_number == 1 else message, theme)
     if slide_model.content:
         add_bullets(slide, [str(item) for item in slide_model.content], y=Inches(2.55) if slide_model.executive_message else Inches(1.55), theme=theme)
 

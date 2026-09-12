@@ -85,9 +85,9 @@ THEMES = {
         "muted": "A0A0B0",
         "background": "1A1A2E",
     },
-    "ups_inspired_corporate_ppt_template": {
-        "id": "ups_inspired_corporate_ppt_template",
-        "name": "UPS Inspired Corporate PPT Template",
+    "ups_template": {
+        "id": "ups__template",
+        "name": "UPS Template",
         "brand_name": "UPS Healthcare",
         "font": "Segoe UI",
         "bg": RGBColor(0xFA, 0xF9, 0xF6),

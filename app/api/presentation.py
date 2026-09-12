@@ -15,7 +15,7 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 
-def _generate(file_id: str, template_id: str = "ups-healthcare", slide_count: int = 8):
+def _generate(file_id: str, template_id: str = "ups-healthcare", slide_count: int = 8, topic_name: str = "", presented_by: str = ""):
     settings = get_settings()
     storage = FileStorage(settings)
     try:
@@ -28,6 +28,7 @@ def _generate(file_id: str, template_id: str = "ups-healthcare", slide_count: in
             logger.exception("LLM planning failed; using deterministic planner")
             presentation = plan(knowledge, slide_count)
         presentation = review(presentation)
+        presentation.presentation.theme.update({"topic_name": topic_name, "presented_by": presented_by})
         output_path = generate_pptx(presentation, storage.output_path(file_id), template_id)
     except FileNotFoundError as error:
         raise HTTPException(status_code=404, detail="Upload not found.") from error
@@ -40,10 +41,10 @@ def _generate(file_id: str, template_id: str = "ups-healthcare", slide_count: in
 
 
 @router.post("/generate-presentation/{file_id}")
-def generate_presentation(file_id: str, template_id: str = Query(default="ups-healthcare"), slide_count: int = Query(default=8, ge=3, le=20)):
-    return _generate(file_id, template_id, slide_count)
+def generate_presentation(file_id: str, template_id: str = Query(default="ups-healthcare"), slide_count: int = Query(default=8, ge=3, le=20), topic_name: str = Query(default=""), presented_by: str = Query(default="")):
+    return _generate(file_id, template_id, slide_count, topic_name, presented_by)
 
 
 @router.post("/generate-presentation")
-def generate_presentation_from_query(file_id: str, template_id: str = Query(default="ups-healthcare"), slide_count: int = Query(default=8, ge=3, le=20)):
-    return _generate(file_id, template_id, slide_count)
+def generate_presentation_from_query(file_id: str, template_id: str = Query(default="ups-healthcare"), slide_count: int = Query(default=8, ge=3, le=20), topic_name: str = Query(default=""), presented_by: str = Query(default="")):
+    return _generate(file_id, template_id, slide_count, topic_name, presented_by)

@@ -8,6 +8,8 @@ const error = document.querySelector('#error');
 const label = document.querySelector('#statusLabel');
 const templateSelect = document.querySelector('#templateSelect');
 const slideCountSelect = document.querySelector('#slideCountSelect');
+const topicNameInput = document.querySelector('#topicNameInput');
+const presentedByInput = document.querySelector('#presentedByInput');
 const download = document.querySelector('#downloadButton');
 let selected;
 let fileId;
@@ -52,10 +54,10 @@ fetch('/api/templates').then(response => response.json()).then(payload => {
     option.title = template.description;
     return option;
   }));
-  if ([...templateSelect.options].some(option => option.value === 'presentation_template')) {
-    templateSelect.value = 'presentation_template';
+  if (templateSelect.options.length > 0) {
+    templateSelect.selectedIndex = 0;
   }
-}).catch(() => { templateSelect.innerHTML = '<option value="presentation_template">Presentation Template</option>'; });
+}).catch(() => { templateSelect.innerHTML = '<option value="ups-healthcare">UPS Healthcare Executive</option>'; });
 
 choose.addEventListener('click', () => input.click());
 if (resetButton) {
@@ -93,6 +95,13 @@ function selectFile(file) {
 }
 
 generate.addEventListener('click', async () => {
+  const topicName = topicNameInput.value.trim();
+  const presentedBy = presentedByInput.value.trim();
+  if (!topicName || !presentedBy) {
+    error.textContent = 'Presentation Topic Name and Presented By are required.';
+    label.textContent = 'Needs attention';
+    return;
+  }
   generate.disabled = true;
   label.textContent = 'Processing';
   error.textContent = '';
@@ -107,7 +116,7 @@ generate.addEventListener('click', async () => {
     mark('uploaded');
     const templateId = templateSelect.value || 'ups-healthcare';
     const slideCount = slideCountSelect.value || '8';
-    const response = await fetch(`/api/generate-presentation?file_id=${encodeURIComponent(fileId)}&template_id=${encodeURIComponent(templateId)}&slide_count=${encodeURIComponent(slideCount)}`, { method: 'POST' });
+    const response = await fetch(`/api/generate-presentation?file_id=${encodeURIComponent(fileId)}&template_id=${encodeURIComponent(templateId)}&slide_count=${encodeURIComponent(slideCount)}&topic_name=${encodeURIComponent(topicName)}&presented_by=${encodeURIComponent(presentedBy)}`, { method: 'POST' });
     const result = await response.json();
     if (!response.ok) throw new Error(result.detail || 'Generation failed');
     ['extracted', 'analyzed', 'planned', 'generated'].forEach(mark);

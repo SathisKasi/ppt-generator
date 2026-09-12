@@ -322,7 +322,7 @@ button, select, a { font: inherit; }
   line-height: 1.4;
 }
 
-.dropzone input { display: none; }
+.dropzone input[type="file"] { display: none; }
 
 .dropzone button,
 .primary,
@@ -423,7 +423,20 @@ button, select, a { font: inherit; }
   text-transform: uppercase;
 }
 
-.template-field select {
+.template-field.inline-field {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+}
+
+.template-field.inline-field input[type="text"] {
+  width: 100%;
+  min-width: 0;
+}
+
+.template-field select,
+.template-field input[type="text"] {
   width: 100%;
   background: #fff;
   border: 1px solid var(--ups-line);
@@ -436,6 +449,11 @@ button, select, a { font: inherit; }
   letter-spacing: normal;
   padding: 12px 14px;
   padding: 8px 12px;
+}
+
+.template-field input[type="text"]:focus {
+  outline: 2px solid var(--ups-gold);
+  outline-offset: 1px;
 }
 
 .status-panel {
