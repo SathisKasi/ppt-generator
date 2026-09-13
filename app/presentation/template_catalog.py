@@ -26,13 +26,6 @@ DEFAULT_TEMPLATES = [
         "description": "High-contrast white layout for concise presentations.",
         "file": "minimal_light.json",
     },
-    {
-        "id": "test-dev-template",
-        "name": "Test_dev template",
-        "description": "Sample red and blue presentation theme for testing.",
-        "file": "test_dev_template.json",
-    },
-    
 ]
 
 
