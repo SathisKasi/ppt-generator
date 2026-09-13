@@ -6,11 +6,11 @@ THEMES = {
         "name": "UPS Healthcare Executive",
         "brand_name": "UPS Healthcare",
         "font": "Segoe UI",
-        "bg": RGBColor(0xFA, 0xF9, 0xF6),        # Warm off-white
-        "primary": RGBColor(0x0D, 0x1F, 0x4D),   # UPS Deep Navy
-        "secondary": RGBColor(0x30, 0x15, 0x06), # UPS Classic Brown
-        "accent": RGBColor(0xFF, 0xB8, 0x1C),    # UPS Warm Gold
-        "card_bg": RGBColor(0xFF, 0xFF, 0xFF),   # Crisp White Card
+        "bg": RGBColor(0xFA, 0xF9, 0xF6),
+        "primary": RGBColor(0x0D, 0x1F, 0x4D),
+        "secondary": RGBColor(0x30, 0x15, 0x06),
+        "accent": RGBColor(0xFF, 0xB8, 0x1C),
+        "card_bg": RGBColor(0xFF, 0xFF, 0xFF),
         "card_border": RGBColor(0xDF, 0xE4, 0xEA),
         "header_bg": RGBColor(0x0D, 0x1F, 0x4D),
         "header_text": RGBColor(0xFF, 0xFF, 0xFF),
@@ -86,7 +86,7 @@ THEMES = {
         "background": "1A1A2E",
     },
     "ups_template": {
-        "id": "ups__template",
+        "id": "ups_template",
         "name": "UPS Template",
         "brand_name": "UPS Healthcare",
         "font": "Segoe UI",
